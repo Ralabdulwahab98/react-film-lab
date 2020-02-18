@@ -10,13 +10,11 @@ export default class App extends React.Component{
   return (
   <div className="film-library">
 
-     <div className="film-list">
        <FilmListing  data={TMDB.films} />
-     </div>
-
-     <div className="film-details">
+     
        <FilmDetails/>
-     </div>
+     
+
   </div>
   );}
 
