@@ -6,7 +6,7 @@ export default class FilmRow extends React.Component{
 
 
     handleDetailsClick = (film)=>{
-        return console.log('Fetching details for' ,film);
+        return console.log('Fetching details for' , film);
 
     }
     
@@ -16,12 +16,19 @@ render() {
 
     return (
      <div className="film-row" onClick={() => this.handleDetailsClick(this.props.filmInfo.title)}>
+
          <FilmPoster imgPoster={this.props.filmInfo}/>
+         
         <div className="film-summary">
+
+        <Fave onFaveToggle={this.props.onFaveToggle} isFave={this.props.isFave}/>
+
             <h1>{this.props.filmInfo.title}</h1>
             <p>{fullYear.getFullYear()}</p>
+
         </div>
-        <Fave/>
+
+        
 
      </div>
     

@@ -16,16 +16,31 @@ export default class  FilmListing extends React.Component {
     handleFilterClick=(filter)=>{
          console.log('Setting filter to' ,filter);
 
-         this.setState({
-            filter: filter,
-    
-        });
+         this.setState({ filter: filter, });
     }
 
     render(){
-        const allListing = this.props.data.map(function (item,index) {
-            return <FilmRow filmInfo={item} key={item.id} />
-        });
+
+        let showFilms = [];
+
+        const allFilms = this.props.data.map((item, index) => {
+          return <FilmRow
+             handleDetailsClick={this.props.handleDetailsClick} 
+             filmInfo={item} key={index} 
+             isFave={this.props.faves.includes(item)} 
+             onFaveToggle={() =>this.props.onFaveToggle(item)}/>
+            });
+
+        const favesFilms = this.props.faves.map((item, index) => {
+           return <FilmRow 
+              handleDetailsClick={this.props.handleDetailsClick} 
+              filmInfo={item} key={index} 
+              isFave={this.props.faves.includes(item)} 
+              onFaveToggle={() =>this.props.onFaveToggle(item)}/>
+            });
+
+
+            this.state.filter === 'all' ? showFilms = allFilms : showFilms = favesFilms
         return(
             <div className="film-list">
             <h1 className="section-title">FILMS</h1>
@@ -34,18 +49,18 @@ export default class  FilmListing extends React.Component {
                 <div className={`film-list-filter ${this.state.filter === 'all' ? 'is-active' : ''}` } 
                      onClick={() => this.handleFilterClick('all')}>
                     ALL
-                    <span className="section-count">{this.props.data.length}</span>
+                    <span className="section-count"> {this.props.data.length} </span>
                 </div>
 
                 <div className={`film-list-filter ${this.state.filter === 'faves' ? 'is-active' : ''}` } 
                     onClick={() => this.handleFilterClick('faves')} >
                     FAVES
-                    <span className="section-count">0</span>
+                    <span className="section-count"> {this.props.faves.length} </span>
                 </div>
 
             </div>
         
-            {allListing}
+            {showFilms}
         </div>
         );}
 }
