@@ -42,7 +42,8 @@ export default class App extends React.Component{
   render() {
     
   return (
-    <div className="App" >
+    // remove it to fix the scroll bar in film list 
+    // <div className="App" >
      <div className="film-library">
        
       <FilmListing 
@@ -56,7 +57,7 @@ export default class App extends React.Component{
       current={TMDB.current} />
 
      </div>
-   </div>
+  //  </div>
   );}
 
 }
