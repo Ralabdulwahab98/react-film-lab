@@ -1,14 +1,12 @@
 import React from 'react';
 
-export default class FilmPoster extends React.Component{
+function FilmPoster (props){
     
+        // const imgURL = "https://image.tmdb.org/t/p/w780";
+        // const imgPath = props.imgPoster;
 
-    render() {
-        const imgURL = "https://image.tmdb.org/t/p/w780";
-        const imgPath = this.props.imgPoster.poster_path;
-
-        return (
-            <img src={imgURL+imgPath} alt="FilmPoster" />
-        );
+        return <img src={`https://image.tmdb.org/t/p/w780/${props.imgPoster}`} alt=" " />
+            // <img src={imgURL+imgPath} alt="FilmPoster" />
+            
     }
-}
+export default FilmPoster;

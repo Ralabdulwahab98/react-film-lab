@@ -13,28 +13,30 @@ export default class  FilmListing extends React.Component {
     }
 
 
-    handleFilterClick=(filter)=>{
+    handleFilterClick = filter => {
          console.log('Setting filter to' ,filter);
 
-         this.setState({ filter: filter, });
+         this.setState({ filter: filter })
     }
 
     render(){
 
         let showFilms = [];
 
-        const allFilms = this.props.data.map((item, index) => {
+        const allFilms = this.props.data.map((item, key) => {
           return <FilmRow
              handleDetailsClick={this.props.handleDetailsClick} 
-             filmInfo={item} key={index} 
+             filmInfo={item} 
+             key={key} 
              isFave={this.props.faves.includes(item)} 
              onFaveToggle={() =>this.props.onFaveToggle(item)}/>
             });
 
-        const favesFilms = this.props.faves.map((item, index) => {
+        const favesFilms = this.props.faves.map((item, key) => {
            return <FilmRow 
               handleDetailsClick={this.props.handleDetailsClick} 
-              filmInfo={item} key={index} 
+              filmInfo={item} 
+              key={key} 
               isFave={this.props.faves.includes(item)} 
               onFaveToggle={() =>this.props.onFaveToggle(item)}/>
             });
