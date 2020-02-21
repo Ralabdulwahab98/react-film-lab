@@ -13,7 +13,7 @@
 
 # misc
 .DS_Store
-.env.local
+.env.local REACT_APP_TMDB_API_KEY=1bfa430aada4409bfa6a3c5528128e8a
 .env.development.local
 .env.test.local
 .env.production.local
